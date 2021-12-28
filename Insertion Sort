@@ -16,7 +16,7 @@ int main()
 void insertion_sort(int a[],int n)
 {
     int i,j,temp;
-    for (int i=0;i<n;i++)
+    for (i=1;i<n;i++)
     {
         temp = a[ i ];    
         j = i;
@@ -30,4 +30,13 @@ void insertion_sort(int a[],int n)
     for(i=0;i<n;i++)
         printf("%d\t",a[i]);
 }
+OUTPUT:
+How many elements?5
+Enter array elements:
+6
+8
+2
+4
+9
+2	4	6	8	9	
     
