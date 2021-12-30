@@ -27,11 +27,6 @@ int main()
     {
         printf("Element %d is not found\n",x);
     }
-    if(i<n)
-        printf("Element found at index %d",i);
-    else
-        printf("Element not found");
-    return 0;
 }
 
 OUTPUT:
@@ -45,4 +40,4 @@ Enter array elements:
 
 Enter element to search: 3
 Element 3 is not found
-Element found at index 0
+
