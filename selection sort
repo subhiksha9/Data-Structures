@@ -1,7 +1,6 @@
 #include<stdio.h>
 void selectionsort (int[], int);
-void
-main ()
+void main ()
 {
   int a[10], n, i;
   scanf ("%d", &n);
@@ -12,8 +11,7 @@ main ()
   selectionsort (a, n);
 }
 
-void
-selectionsort (int a[], int n)
+void selectionsort (int a[], int n)
 {
   int mpos, i, j, t;
   for (i = 0; i < n-1; i++)
@@ -25,6 +23,7 @@ selectionsort (int a[], int n)
 	    {
 	      mpos = j;
 	    }
+	}
 	  t = a[mpos];
 	  a[mpos] = a[i];
 	  a[i] = t;
