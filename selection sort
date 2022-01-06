@@ -1,34 +1,51 @@
+//selection sort
 #include<stdio.h>
-void selectionsort (int[], int);
-void main ()
+void selectionSort(int a[],int n)
 {
-  int a[10], n, i;
-  scanf ("%d", &n);
-  for (i = 0; i < n; i++)
+    int minpos,t;
+    for(int i=0;i<n;i++)
     {
-      scanf ("%d", &a[i]);
+        minpos=i;
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[minpos]>a[j])
+            {
+                minpos=j;
+            }
+        }
+        t=a[minpos];
+        a[minpos]=a[i];
+        a[i]=t;
     }
-  selectionsort (a, n);
+    printf("After Sorting using Selection Sort\n");
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
+void main()
+{
+    int n;
+    printf("Enter size of the array:\n");
+    scanf("%d",&n);
+    int a[n];
+    printf("Enter elements into array\n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    selectionSort(a,n);
 }
 
-void selectionsort (int a[], int n)
-{
-  int mpos, i, j, t;
-  for (i = 0; i < n-1; i++)
-    {
-      mpos = i;
-      for (j = i + 1; j < n; j++)
-	{
-	  if (a[mpos] > a[j])
-	    {
-	      mpos = j;
-	    }
-	}
-	  t = a[mpos];
-	  a[mpos] = a[i];
-	  a[i] = t;
-	}
-    }
-  for (i = 0; i < n; i++)
-    printf ("%d\t", a[i]);
-}
+
+OUTPUT:
+Enter size of the array:
+5
+Enter elements into array
+44
+3
+6
+8
+9
+After Sorting using Selection Sort
+3 6 8 9 44 
