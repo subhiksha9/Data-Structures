@@ -222,7 +222,7 @@ Enter your choice:
 3.Delete
 4.Display
 5.Exit
-3=  2
+2
 Enter a value to search
 94
 94 element is not found
@@ -262,7 +262,7 @@ Enter your choice:
 3.Delete
 4.Display
 5.Exit
-2 4
+4
 0<->NULL
 1<->0->1->NULL
 2<->32->NULL
