@@ -1,73 +1,151 @@
 #include<stdio.h>
-#define max 5
-int a[max],top=-1;
+#include<stdlib.h>
+#define MAX 20
+int a[MAX],top=-1;
 void push(int x)
 {
-    if(top==max-1)
+    if(top==MAX-1)
     {
-        printf("Stack overflown");
+        printf("Stack Over Flow\n");
     }
     else
     {
-        a[top++]=x;
-        printf("%d is inserted ",x);
+        a[++top]=x;
     }
 }
-void pop()
+int pop()
 {
     if(top==-1)
     {
-        printf("Stack underflown");
         return -1;
     }
     else
     {
-        printf("Element deleted=%d",a[top--]);
         return a[top--];
     }
 }
 int peek()
 {
-    return a[top];
-}
-void display()
-{
-    int i;
     if(top==-1)
     {
-        printf("No element is found\n");
+        return -1;
     }
     else
     {
-        for(i=top;i>=0;i--)
+        return a[top];
+    }
+}
+void display()
+{
+    if(top==-1)
+    {
+        printf("No stack found\n");
+    }
+    else
+    {
+        for(int i=top;i>=0;i--)
         {
-            printf("\n%d",a[i]);
+            printf("%d\n",a[i]);
         }
     }
 }
 void main()
 {
-    int x,choice;
+    int x,ch;
+    printf("Menu Driven\n1.Push\n2.Pop\n3.Peek\n4.Display\n5.Exit\n");
     while(1)
     {
-        printf("\n1.push\n2.pop\n3.peek\n4.display\n");
         printf("Enter your choice\n");
-        scanf("%d",&choice);
-        switch(choice)
+        scanf("%d",&ch);
+        switch(ch)
         {
-            case 1: printf("Enter the element to insert");
-                    scanf("%d",&x);
-                    push(x);
-                    break;
-            /*case 2: pop();
-                    break;
-            case 3: x=peek();
-                    printf("The element at the top of the stack is %d",x);
-                    break;*/
-            case 4: printf("The elements of the stack are : ");
-                    display();
-                    break;
-            case 5: exit(0);
+            case 1:printf("Enter an element to push\n");
+                   scanf("%d",&x);
+                   push(x);
+                   break;
+            case 2:x=pop();
+                   if(x==-1)
+                   {
+                       printf("Stack Under Flow\n");
+                   }
+                   else
+                   {
+                       printf("The pop element is %d\n",x);
+                   }
+                   break;
+            case 3:x=peek();
+                   if(x==-1)
+                   {
+                       printf("No Peek Value\n");
+                   }
+                   else
+                   {
+                       printf("Peek value in Stack is %d\n",x);
+                   }
+                   break;
+            case 4:display();
+                   break;
+            case 5:printf("While loop is terminated\n");
+                   exit(0);
+                   break;
+            default:printf("Check your choice\n");
         }
     }
 }
+
+
+
+
+OUTPUT:
+Menu Driven
+1.Push
+2.Pop
+3.Peek
+4.Display
+5.Exit
+Enter your choice
+1
+Enter an element to push
+5
+Enter your choice
+1
+Enter an element to push
+7
+Enter your choice
+1
+Enter an element to push
+3
+Enter your choice
+4
+5
+7
+3
+Enter your choice
+2
+The pop element is 5
+Enter your choice
+3
+Peek value in Stack is 7
+Enter your choice
+1
+Enter an element to push
+3
+Enter your choice
+1
+Enter an element to push
+3
+Enter your choice
+2
+The pop element is 3
+Enter your choice
+2
+The pop element is 5
+Enter your choice
+2
+The pop element is 7
+Enter your choice
+2
+The pop element is 5
+Enter your choice
+2
+Stack Under Flow
