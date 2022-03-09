@@ -1,0 +1,49 @@
+#include<stdio.h>
+#define size 3
+int visited[size];
+void DFS(int v,int (*a)[10],int m)
+{
+    int j;
+    visited[v]=1;
+      printf("%d",v);
+    for(j=1;j<=m;j++)
+   { if(visited[j]==0&&a[v][j]==1)
+    {
+       
+        DFS(j,a,m);
+       
+    }
+   
+
+
+   }
+}
+void main()
+{
+    int m,n,v,i,j,a[10][10];
+    printf("Enter array size\n");
+    scanf("%d",&m);
+    for(int i=1;i<=size;i++)
+{
+    visited[i]=0;
+}
+    printf("Enter adjacency matrix");
+    for(i=1;i<=m;i++)
+    {
+
+        for(j=1;j<=m;j++)
+        {
+            printf("Enter %d row %d column",i,j);
+            scanf("%d",&a[i][j]);
+        }
+    }
+    printf("Enter vertex");
+    scanf("%d",&v);
+    int visited[m];
+    for(int i=1;i<m+1;i++)
+    {
+        visited[i]=0;
+    }
+    DFS(v,a,m);
+   
+}
