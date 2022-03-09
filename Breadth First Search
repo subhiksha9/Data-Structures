@@ -1,0 +1,102 @@
+#include<stdio.h>
+int q[5],front=-1,rear=-1;
+void enqueue(int x)
+{
+    if(front==-1)
+    {
+        rear=front=0;
+    }
+    else
+    {
+        rear++;
+    }
+    q[rear]=x;
+}
+int dequeue()
+{
+    int x;
+    if(front==-1)
+    {
+        return -1;
+    }
+    else
+    {
+        x=q[front];
+        if(front==rear)
+        {
+            front=rear=-1;
+        }
+        else
+        {
+            front++;
+        }
+        return x;
+    }
+}
+int isempty()
+{
+    if(front==-1&&rear==-1)
+    {
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+void BFS(int (*a)[10],int v,int m)
+{
+    int visited[m],i;
+    enqueue(v);
+    int u=v;
+    for(int i=1;i<=m;i++)
+    {
+        visited[i]=0;
+    }
+    
+    while(1)
+   {
+    
+    for(i=1;i<=m;i++)
+    {   
+        if(visited[i]==0&&a[u][i]==1)
+        {   
+            
+            enqueue(i);
+            visited[i]=1;
+            
+
+        }
+        if(isempty())
+        {
+              return;
+        }
+        else
+        {
+             u=dequeue();
+             printf("%d",u);
+        }
+    }
+
+
+}
+}
+void main()
+{
+    int m,n,v,i,j,a[10][10];
+    printf("Enter array size\n");
+    scanf("%d",&m);
+    printf("Enter adjacency matrix");
+    for(i=1;i<=m;i++)
+    {
+
+        for(j=1;j<=m;j++)
+        {
+            printf("Enter %d row %d column",i,j);
+            scanf("%d",&a[i][j]);
+        }
+    }
+    printf("Enter vertex");
+    scanf("%d",&v);
+    BFS(a,v,m);
+    
+}
