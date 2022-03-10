@@ -1,49 +1,46 @@
 #include<stdio.h>
-#define size 3
-int visited[size];
-void DFS(int v,int (*a)[10],int m)
+#define MAX 50
+int visited[MAX];
+int graph[MAX][MAX];
+int n;
+void readGraph()
 {
-    int j;
-    visited[v]=1;
-      printf("%d",v);
-    for(j=1;j<=m;j++)
-   { if(visited[j]==0&&a[v][j]==1)
+    printf("Enter size of the Adjacency Matrix :\n");
+    scanf("%d",&n);
+    printf("Enter Adjacency Matrix :\n");
+    for(int i=1;i<=n;i++)
     {
-       
-        DFS(j,a,m);
-       
+        for(int j=1;j<=n;j++)
+        {
+            scanf("%d",&graph[i][j]);
+        }
     }
-   
-
-
-   }
+}
+void DFS(int v)
+{
+    visited[v]=1;
+    printf("%d ",v);
+    for(int i=1;i<=n;i++)
+    {
+        if(visited[i]==0 && graph[v][i]==1)
+        {
+                visited[i]=1;
+                DFS(i);
+        }
+    }
 }
 void main()
 {
-    int m,n,v,i,j,a[10][10];
-    printf("Enter array size\n");
-    scanf("%d",&m);
-    for(int i=1;i<=size;i++)
-{
-    visited[i]=0;
-}
-    printf("Enter adjacency matrix");
-    for(i=1;i<=m;i++)
+    readGraph();
+    printf("Depth First Search :\n");
+    for(int j=1;j<=n;j++)
     {
-
-        for(j=1;j<=m;j++)
+        printf("Graph Start at vertex %d\n",j);
+        for(int i=1;i<=n;i++)
         {
-            printf("Enter %d row %d column",i,j);
-            scanf("%d",&a[i][j]);
+            visited[i]=0;
         }
+        DFS(j);
+        printf("\n");
     }
-    printf("Enter vertex");
-    scanf("%d",&v);
-    int visited[m];
-    for(int i=1;i<m+1;i++)
-    {
-        visited[i]=0;
-    }
-    DFS(v,a,m);
-   
 }
